@@ -1,5 +1,5 @@
 # Використовуємо потрібну базову імейдж, у цьому випадку - Python 3.9
-FROM python:3.11
+FROM python:3.9
 
 # Встановлюємо директорію робочого середовища в контейнері
 WORKDIR /app
@@ -7,11 +7,11 @@ WORKDIR /app
 # Копіюємо файли залежностей проекту до контейнера
 COPY pyproject.toml poetry.lock /app/
 
-# Виконуємо команду встановлення залежностей проекту
-RUN pip install poetry && poetry install --no-dev
-
 # Копіюємо всі файли проекту до контейнера
 COPY . /app
 
+# Виконуємо команду встановлення залежностей проекту
+RUN pip install poetry && poetry install --no-dev
+
 # Запускаємо команду для запуску вашого застосунку
-CMD ["python", "your_script.py"]
+CMD ["python", "AddressBook.py"]
